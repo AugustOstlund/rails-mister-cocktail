@@ -1,0 +1,23 @@
+<h1>Cocktails#show</h1>
+<p>Find me in app/views/cocktails/show.html.erb</p>
+
+<% content_for(:title) do %>
+  cocktails | <%= @cocktail.name %>
+<% end %>
+
+<% content_for(:description) do %>
+  cocktails | <%= @cocktail.name %>
+<% end %>
+
+  <h1>Cocktail details</h1>
+  <%= link_to "cocktails list", cocktails_path %> | <%= link_to "Edit cocktail", edit_cocktail_path(@cocktail) %>
+
+
+  <% @cocktail.doses.each do |d| %>
+        <li>
+          <%= d.description %> <%= d.ingredient.name %>
+          <%= link_to "mmblep".html_safe, d, method: :delete %>
+        </li>
+    <% end %>
+
+<%= link_to 'add a new dose', doses_path %>

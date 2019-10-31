@@ -1,0 +1,17 @@
+<h1>bleep bloop cocktails</h1>
+
+<% content_for(:title) do %>
+(<%= @cocktails.count %> cocktails)
+<% end %>
+
+<div>
+<h1>Cocktails list:</h1>
+  <%= link_to "Create a new cocktail", new_cocktail_path %>
+  <% @cocktails.each do |c| %>
+  <%= link_to c.name, c %>
+        <%= link_to " edit", edit_cocktail_path(c) %>
+        <%= link_to " delete", cocktail_path(c),
+        method: :delete,
+        data: { confirm: "Are you sure ?" } %>
+  <% end %>
+</div>
